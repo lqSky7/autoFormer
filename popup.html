@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Google Form Autofill</title>
+  <style>
+    :root {
+      --grid-color: rgba(255, 255, 255, 0.05);
+      --bg-color: #121212;
+      --text-color: #e0e0e0;
+      --accent-color: #4285f4;
+      --hover-color: #3367d6;
+      --card-bg: rgba(30, 30, 30, 0.7);
+      --border-color: rgba(255, 255, 255, 0.1);
+    }
+    
+    body {
+      width: 300px;
+      padding: 15px;
+      font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      background-image: 
+        linear-gradient(var(--grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+      background-size: 20px 20px;
+      animation: fadeIn 0.5s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    h2, h3 {
+      color: var(--text-color);
+    }
+    
+    button {
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      margin-bottom: 15px;
+      font-family: inherit;
+      animation: slideIn 0.8s ease-out;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    button:hover {
+      background-color: var(--hover-color);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .stats {
+      margin-top: 15px;
+      border-top: 1px solid var(--border-color);
+      padding-top: 15px;
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 15px;
+      animation: slideIn 1s ease-out;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--border-color);
+    }
+    
+    .stat-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    
+    .total {
+      font-weight: bold;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border-color);
+    }
+    
+    .hidden {
+      display: none;
+    }
+    
+    .message {
+      color: var(--accent-color);
+      text-align: center;
+      margin-top: 10px;
+      font-style: italic;
+      animation: slideIn 0.8s ease-out;
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      padding: 10px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+  </style>
+</head>
+<body>
+  <h2>Google Form Autofill</h2>
+  <button id="fillForm">Fill Form with First Options</button>
+  
+  <div id="stats" class="stats hidden">
+    <h3>Fill Statistics:</h3>
+    <div class="stat-item">
+      <span>Radio Buttons:</span>
+      <span id="radioCount">0</span>
+    </div>
+    <div class="stat-item">
+      <span>Checkboxes:</span>
+      <span id="checkboxCount">0</span>
+    </div>
+    <div class="stat-item">
+      <span>Dropdowns:</span>
+      <span id="dropdownCount">0</span>
+    </div>
+    <div class="stat-item total">
+      <span>Total Items Filled:</span>
+      <span id="totalCount">0</span>
+    </div>
+  </div>
+  
+  <div id="message" class="message hidden">Processing...</div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

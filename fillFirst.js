@@ -1,4 +1,3 @@
-
 (function() {
 
     let stats = {
@@ -41,4 +40,7 @@
       }, 100);
     });
 
+    // Expose stats to the page so the popup can access it
+    window.formFillStats = stats;
+    return stats;
   })();
