@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Google Form Autofill",
-  "version": "1.0",
-  "description": "Automatically fills in Google Forms with first options or random values",
+  "name": "Google Form Autofiller",
+  "version": "0.2",
+  "description": "Automatically fills Google Forms multiple times with random values",
   "action": {
     "default_popup": "popup.html"
   },
