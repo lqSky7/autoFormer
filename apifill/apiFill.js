@@ -197,16 +197,44 @@ async function submit(url, data) {
 
 /**
  * Main function to fill and submit a Google Form
+ * @param {string} url - The Google Form URL
+ * @param {boolean} onlyRequired - Whether to fill only required fields
+ * @param {number} times - Number of times to submit the form
+ * @returns {Object} - Results of the submissions
  */
-async function fillForm(url, onlyRequired = false) {
+async function fillForm(url, onlyRequired = false, times = 1) {
     try {
-        console.log("Processing form:", url);
-        const payload = await generateRequestBody(url, onlyRequired);
-        console.log("Form data ready");
+        console.log(`Processing form: ${url} (${times} submissions)`);
         
-        const result = await submit(url, payload);
-        console.log(result ? "Success!" : "Failed!");
-        return result;
+        let successful = 0;
+        let failed = 0;
+        
+        for (let i = 0; i < times; i++) {
+            console.log(`Submission ${i+1}/${times}`);
+            const payload = await generateRequestBody(url, onlyRequired);
+            console.log("Form data ready");
+            
+            const result = await submit(url, payload);
+            if (result) {
+                successful++;
+                console.log(`Submission ${i+1}: Success!`);
+            } else {
+                failed++;
+                console.log(`Submission ${i+1}: Failed!`);
+            }
+            
+            // Add a small delay between submissions if multiple
+            if (times > 1 && i < times - 1) {
+                await new Promise(resolve => setTimeout(resolve, 1000));
+            }
+        }
+        
+        console.log(`Completed ${times} submissions. Success: ${successful}, Failed: ${failed}`);
+        return {
+            total: times,
+            successful,
+            failed
+        };
     } catch (err) {
         console.error("Form fill error:", err);
         return false;
