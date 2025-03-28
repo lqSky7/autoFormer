@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Google Form Autofill",
   "version": "1.0",
-  "description": "Automatically fills in Google Forms with first options",
+  "description": "Automatically fills in Google Forms with first options or random values",
   "action": {
     "default_popup": "popup.html"
   },
@@ -15,5 +15,17 @@
   ],
   "host_permissions": [
     "https://docs.google.com/forms/*"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["apifill/apiFill.js"],
+      "matches": ["https://docs.google.com/*"]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://docs.google.com/forms/*"],
+      "js": ["apifill/content-script.js"]
+    }
   ]
 }
