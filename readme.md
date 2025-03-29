@@ -2,9 +2,8 @@
 
 ![Google Form Autofill Logo](icons/logo.png)
 
-## Introduction
-
-**Google Form Autofill** is a browser extension that streamlines the process of filling out Google Forms. Whether you're testing your forms, generating sample data, or automating repetitive form submissions, this tool provides an efficient solution. It supports both basic filling (selecting first options) and advanced API-based filling with randomized or custom values.
+## Note
+I'll be busy and if you need any of the features mentioned below in roadmap just mail me you'll I'll update the repo within two non-working days.
 
 ## Project Roadmap
 
