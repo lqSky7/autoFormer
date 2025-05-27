@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const radioCount = document.getElementById('radioCount');
   const checkboxCount = document.getElementById('checkboxCount');
   const dropdownCount = document.getElementById('dropdownCount');
+  const textCount = document.getElementById('textCount');
   const totalCount = document.getElementById('totalCount');
   
   // Progress tracking elements
@@ -18,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const failCount = document.getElementById('failCount');
   
   // Tab functionality
-  const tabButtons = document.querySelectorAll('.tab-button');
+  const tabButtons = document.querySelectorAll('.tab');
   const tabContents = document.querySelectorAll('.tab-content');
   
   tabButtons.forEach(button => {
@@ -72,6 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
         radioCount.textContent = stats.radioSelected;
         checkboxCount.textContent = stats.checkboxSelected;
         dropdownCount.textContent = stats.dropdownSelected;
+        textCount.textContent = stats.textSelected || 0;
         totalCount.textContent = stats.total;
         
         statsDiv.classList.remove('hidden');
@@ -212,5 +214,11 @@ document.addEventListener('DOMContentLoaded', function() {
       failCount.textContent = failed;
     }
     return true;
+  });
+
+  // Star button functionality
+  const starButton = document.getElementById('starButton');
+  starButton.addEventListener('click', () => {
+    chrome.tabs.create({ url: 'https://github.com/lqSky7/autoformer' });
   });
 });
